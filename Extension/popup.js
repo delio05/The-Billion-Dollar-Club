@@ -33,3 +33,11 @@ $(function () {
     $("#sentence").val("");
   });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  var showButton = document.getElementById('sentenceSubmit');
+  showButton.onclick = function () {
+    var input = document.getElementById('sentence').value;
+    document.getElementById('displayText').innerText = input;
+  };
+});
