@@ -1,10 +1,20 @@
 {
-    "name": "MyChart Extension",
-    "description": "Base Level Extension",
-    "version": "1.0",
-    "manifest_version": 3,
-    "action": {
-      "default_popup": "myChart.html",
-      "default_icon": "myChartIcon.png"
-    }
-  }
+  "name": "MyChart Extension",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "myChart.html",
+    "default_icon": "myChartIcon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "tabs",
+    "http://127.0.0.1:8000/",
+    "background",
+    "identity",
+    "notifications"
+  ]
+}
