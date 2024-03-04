@@ -10,11 +10,7 @@
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": [
-    "tabs",
-    "http://127.0.0.1:8000/",
-    "background",
-    "identity",
-    "notifications"
+  "host_permissions": [
+    "http://127.0.0.1:8000/"
   ]
 }
