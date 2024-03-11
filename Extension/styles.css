@@ -13,15 +13,47 @@ body {
     margin-top: 135px;
 }
 
-#sentenceSubmit {
-    border: 2px solid #111;
-    padding: 5px 10px;
-    margin-top: 10px;
-    cursor: pointer;
-    display: inline-block;
-}
-
 #loading-icon {
     width: 50px;
     height: 50px;
 }
+
+#sentence {
+    width: 300px;
+    margin-bottom: 10px; /* Add margin at the bottom of the textarea */
+  }
+
+#sentenceSubmit {
+margin-bottom: 20px; /* Add margin at the bottom of the button */
+}
+
+#icon {
+    position: absolute;
+    top: 6px; /* Adjust the top position as needed */
+    right: 25px; /* Adjust the right position as needed */
+    width: 60px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Summarize Button */
+.styled-button {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #3498db;
+    color: #ffffff; 
+    border: 2px solid #3498db;
+  }
+
+  /* Hover effect */
+  .styled-button:hover {
+    background-color: #2980b9;
+    color: #ffffff; 
+    border: 2px solid #2980b9; 
+  }
