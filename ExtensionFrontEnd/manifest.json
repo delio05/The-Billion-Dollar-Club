@@ -1,0 +1,27 @@
+{
+  "name": "MyChart Extension",
+  "description": "Simplify medical text with this AI-driven translating extension",
+  "version": "1.0",
+  "manifest_version": 3,
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
+        "highlighter.js",
+        "content.js"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "myChartIcon.png"
+  }
+}
+

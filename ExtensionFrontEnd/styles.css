@@ -1,0 +1,42 @@
+body {
+    width: 300px; /* width of popup extension */
+    height: 400px; /* height of popup extension */
+    padding: 20px; 
+    overflow: auto; /* so we can scroll once there's more content */
+}
+
+#loader-container {
+    text-align: center;
+    margin-top: 135px;
+}
+
+#loading-icon {
+    width: 50px; 
+    height: 50px; 
+}
+
+.instruction-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    position: relative;
+  }
+  
+  .instruction-box p {
+    margin: 10px 0;
+  }
+  
+  #closeButton {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+
+
+
+
