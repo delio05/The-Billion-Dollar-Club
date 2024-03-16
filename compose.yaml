@@ -12,7 +12,7 @@ version: "3.8"
 services:
   server:
     build: ./MyChartExtension
-    command: python3 manage.py runserver 0.0.0.0:8000 > log.txt
+    command: sh -c "python3 manage.py runserver 0.0.0.0:8000 > MyChartExtension/backend.log 2>&1"
     volumes:
       - ./MyChartExtension:/usr/src/app
     ports:
