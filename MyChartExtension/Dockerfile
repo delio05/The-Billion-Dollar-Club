@@ -17,6 +17,7 @@ WORKDIR /usr/src/app
 RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
+RUN pip install -U python-dotenv==1.0.1
 
 
 # Copy the source code into the container.
