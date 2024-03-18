@@ -9,18 +9,31 @@
 
 <body>
   <h1>MyChart Extension</h1>
-  <p>You have highlighted: <span id="highlightedText"></span></p>
-  <div id="chatGPTResponse">Here is a simplified version!</div>
-  <div id="instructionBox" class="instruction-box">
-    <p><b><i> &#128075 Hi, welcome!</i></b></p>
-    <p><b>To use this extension:</b></p>
-    <p>1. Highlight whatever medical text you would like to simplify.
-      (You can choose to click the black highlight icon to see what you've highlighted, but this is optional!)
-    </p>
-    <p>2. Click on this extension to see the original text and the simplified version side by side</p>
-    <p>It's as easy as that &#128513</p>
-    <button id="closeButton">Close</button>
-  </div>
+
+  <img src="myChartIcon.png" alt="myChartIcon" id="icon" />
+
+      <textarea 
+        id="highlightedText"  
+        style="width: 300px; max-width: 300px; min-width: 300px;" 
+        type="text">
+      </textarea>
+
+      <input id="sentenceSubmit" class="styled-button" type="submit" value="Summarize">
+
+      <div id="instructionBox" class="instruction-box">
+        <p><b><i> &#128075 Hi, welcome!</i></b></p>
+        <p><b>To use this extension:</b></p>
+        <p>1. Highlight whatever medical text you would like to simplify. 
+          (You can choose to click the black highlight icon to see what you've highlighted, but this is optional!)
+        </p>
+        <p>2. Click on this extension to see the original text</p>
+        <p>3. Click on the 'Summarize' button to see your simplification below!</p>
+        <p>It's as easy as that &#128513</p>
+        <button id="closeButton">Close</button>
+      </div>
+
+      <!-- Backend displays text here -->
+      <div id="chatGPTResponse"></div>
 </body>
 
 </html>

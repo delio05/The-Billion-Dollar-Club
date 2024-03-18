@@ -10,14 +10,22 @@ document.addEventListener("DOMContentLoaded", function () {
   chrome.storage.local.get(['selectedText'], function (result) {
     if (result.selectedText) {
       document.getElementById("highlightedText").textContent = result.selectedText;
-      document.getElementById("sentence").value = result.selectedText; // To get the resulting hightlighted text into the text area
     } else {
       document.getElementById("highlightedText").textContent = "No text selected.";
     }
   });
 });
 
-function sendTextToBackend(text) {
+// Listener for Summarize Button
+document.addEventListener('DOMContentLoaded', function () {
+  var button = document.getElementById('sentenceSubmit');
+  button.addEventListener('click', function () {
+    sendTextToBackend();
+  });
+});
+
+function sendTextToBackend() {
+  let text = document.getElementById("highlightedText").textContent;
   const url = `http://localhost:8000/sentenceAnalyze/?content=${encodeURIComponent(text)}`;
   fetch(url)
     .then(response => response.json())
