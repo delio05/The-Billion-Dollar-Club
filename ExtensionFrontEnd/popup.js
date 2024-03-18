@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
   chrome.storage.local.get(['selectedText'], function(result) {
     if (result.selectedText) {
       document.getElementById("highlightedText").textContent = result.selectedText;
+      document.getElementById("sentence").value = result.selectedText; // To get the resulting hightlighted text into the text area
     } else {
       document.getElementById("highlightedText").textContent = "No text selected.";
     }
