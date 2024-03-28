@@ -2,16 +2,20 @@ import os
 import json
 import openai
 from openai import OpenAI
-from dotenv import load_dotenv
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from django.contrib import messages
 
 debug = True
-load_dotenv()
+
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+if OPENAI_API_KEY is None:
+    from dotenv import load_dotenv
+    load_dotenv()
+    OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
 client = OpenAI(
-    api_key = os.environ.get("OPENAI_KEY"),
+    api_key = OPENAI_API_KEY
 )
 
 # client = OpenAI()
@@ -32,7 +36,7 @@ def get_sentence(request):
             messages = [
                 {
                     "role":"system",
-                    "content":"You are a docter, skilled in explaining complex medical terms to patients whom with no professional backgroud. You will directly give your explanation with middle-school level semantics "
+                    "content":"You are a docter, skilled in explaining complex medical terms to patients whom with no professional backgroud. You will directly give your explanation with middle-school level semantics and relatively short paragraph."
                 },
                 {
                     "role":"user",
