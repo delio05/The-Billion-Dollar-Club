@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function sendTextToBackend() {
   let text = document.getElementById("highlightedText").textContent;
-  const url = `http://localhost:8000/handleImages/sentenceAnalyze/?content=${encodeURIComponent(text)}`;
+  let language = document.getElementById("languageChooser").value;
+  const url = `http://localhost:8000/handleImages/sentenceAnalyze/?content=${encodeURIComponent(text)}&language=${encodeURIComponent(language)}`;
   fetch(url)
     .then(response => response.json())
     .then(data => {
