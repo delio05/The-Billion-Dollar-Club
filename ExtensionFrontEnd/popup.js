@@ -36,3 +36,18 @@ function sendTextToBackend() {
     })
     .catch(error => console.error('Error sending text to backend:', error));
 }
+
+// Listener for Extracting buttom
+document.getElementById('extractButton').addEventListener('click', function () {
+
+  var textToExtract = document.getElementById('highlightedText').innerText;
+
+  var blob = new Blob([textToExtract], { type: 'text/plain' });
+  console.log(blob);
+  var url = URL.createObjectURL(blob);
+  console.log(blob);
+  var link = document.createElement('a');
+  link.href = url;
+  link.download = 'extracted_text.pdf'; // Set the download attribute
+  link.click(); // Simulate a click on the link
+});

@@ -13,38 +13,36 @@
 
   <img src="myChartIcon.png" alt="myChartIcon" id="icon" />
 
-      <textarea 
-        id="highlightedText"  
-        style="width: 300px; max-width: 300px; min-width: 300px;" 
-        type="text">
+  <textarea id="highlightedText" style="width: 300px; max-width: 300px; min-width: 300px;" type="text">
       </textarea>
 
-      <div style="display: flex; align-items: center; gap: 10px;">
-      <input id="sentenceSubmit" class="styled-button" type="submit" value="Summarize">
-        <select id="languageChooser">
-          <option value="Englsih" seelcted="selected">English</option>
-          <option value="Franch">Français</option>
-          <option value="Chinese">中文</option>
-          <option value="Spanish">Español</option>
-          <option value="German">Deutsch</option>
-          <!-- Add more languages as needed -->
-        </select>
-      </div>
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <input id="sentenceSubmit" class="styled-button" type="submit" value="Summarize">
+    <select id="languageChooser">
+      <option value="Englsih" seelcted="selected">English</option>
+      <option value="Franch">Français</option>
+      <option value="Chinese">中文</option>
+      <option value="Spanish">Español</option>
+      <option value="German">Deutsch</option>
+      <!-- Add more languages as needed -->
+    </select>
+  </div>
 
-      <div id="instructionBox" class="instruction-box">
-        <p><b><i> &#128075 Hi, welcome!</i></b></p>
-        <p><b>To use this extension:</b></p>
-        <p>1. Highlight whatever medical text you would like to simplify. 
-          (You can choose to click the black highlight icon to see what you've highlighted, but this is optional!)
-        </p>
-        <p>2. Click on this extension to see the original text</p>
-        <p>3. Click on the 'Summarize' button to see your simplification below!</p>
-        <p>It's as easy as that &#128513</p>
-        <button id="closeButton">Close</button>
-      </div>
+  <div id="instructionBox" class="instruction-box">
+    <p><b><i> &#128075 Hi, welcome!</i></b></p>
+    <p><b>To use this extension:</b></p>
+    <p>1. Highlight whatever medical text you would like to simplify.
+      (You can choose to click the black highlight icon to see what you've highlighted, but this is optional!)
+    </p>
+    <p>2. Click on this extension to see the original text</p>
+    <p>3. Click on the 'Summarize' button to see your simplification below!</p>
+    <p>It's as easy as that &#128513</p>
+    <button id="closeButton">Close</button>
+  </div>
 
-      <!-- Backend displays text here -->
-      <div id="chatGPTResponse"></div>
+  <!-- Backend displays text here -->
+  <div id="chatGPTResponse"></div>
+  <button id="extractButton" class="styled-button">Extract to PDF</button>
 </body>
 
 </html>
