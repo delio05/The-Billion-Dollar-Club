@@ -1,3 +1,11 @@
-# How to Start Backend
+# Backend Guide
 
-Stay in the root directory, run the command `docker-compose build` if no images are installed, then run the command `docker compose up -d` to start the server.
+## SETUP OPEN_AI_API key
+
+Create the `.env` file under the **MyChartExtension** directory. Write in `OPENAI_API_KEY=***` (replace `***` by your api key).
+
+## How to Start Server
+
+Stay in the **THE-BILLION-DOLLAR-CLUB**. First install needed Python modules by `pip3 install -r requirements.txt`.
+
+Head to the **MyChartExtension** directory, and run server by the command `python3 manage.py runserver`.
