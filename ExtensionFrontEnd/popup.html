@@ -19,7 +19,7 @@
   <div style="display: flex; align-items: center; gap: 10px;">
     <input id="sentenceSubmit" class="styled-button" type="submit" value="Summarize">
     <select id="languageChooser">
-      <option value="Englsih" seelcted="selected">English</option>
+      <option value="Englsih" selected="selected">English</option>
       <option value="Franch">Français</option>
       <option value="Chinese">中文</option>
       <option value="Spanish">Español</option>
@@ -27,6 +27,12 @@
       <!-- Add more languages as needed -->
     </select>
   </div>
+
+  <!-- Backend displays text here -->
+  <div id="chatGPTResponse"></div>
+    <button id="extractButton" class="pdfButton">Extract to PDF</button>
+    <button id="reopenButton" class="reopenButton">Help</button>
+  </body>
 
   <div id="instructionBox" class="instruction-box">
     <p><b><i> &#128075 Hi, welcome!</i></b></p>
@@ -39,10 +45,4 @@
     <p>It's as easy as that &#128513</p>
     <button id="closeButton">Close</button>
   </div>
-
-  <!-- Backend displays text here -->
-  <div id="chatGPTResponse"></div>
-  <button id="extractButton" class="styled-button">Extract to PDF</button>
-</body>
-
 </html>

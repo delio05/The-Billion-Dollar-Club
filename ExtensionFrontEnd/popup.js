@@ -1,10 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const closeButton = document.getElementById("closeButton");
-  const instructionBox = document.getElementById("instructionBox");
-
-  closeButton.addEventListener("click", function () {
-    instructionBox.style.display = "none";
-  });
 
   //this is what gets the selected highlighted text and displays it on the extension
   chrome.storage.local.get(['selectedText'], function (result) {
@@ -51,3 +45,31 @@ document.getElementById('extractButton').addEventListener('click', function () {
   link.download = 'extracted_text.pdf'; // Set the download attribute
   link.click(); // Simulate a click on the link
 });
+
+//Listener for Helper text box (minimize and maximize)
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('icon').addEventListener('click', toggleInstructionBox);
+  document.getElementById('closeButton').addEventListener('click', toggleInstructionBox);
+  document.getElementById('reopenButton').addEventListener('click', reopenInstructionBox);
+
+  document.getElementById('reopenButton').style.display = 'none';
+});
+
+function toggleInstructionBox() {
+  var instructionBox = document.getElementById("instructionBox");
+  instructionBox.classList.toggle("minimized");
+  toggleReopenButtonVisibility();
+}
+
+function toggleReopenButtonVisibility() {
+  var reopenButton = document.getElementById("reopenButton");
+  if (reopenButton) {
+    reopenButton.style.display = document.getElementById("instructionBox").classList.contains("minimized") ? "block" : "none";
+  }
+}
+
+function reopenInstructionBox() {
+  var instructionBox = document.getElementById("instructionBox");
+  instructionBox.classList.remove("minimized");
+  toggleReopenButtonVisibility();
+}
