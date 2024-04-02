@@ -1,11 +1,7 @@
-# Backend Guide
+## Frontend
 
-## SETUP OPEN_AI_API key
+<!-- Wait for content added -->
 
-Create the `.env` file under the **MyChartExtension** directory. Write in `OPENAI_API_KEY=***` (replace `***` by your api key).
+## Backend
 
-## How to Start Server
-
-Stay in the **THE-BILLION-DOLLAR-CLUB**. First install needed Python modules by `pip3 install -r requirements.txt`.
-
-Head to the **MyChartExtension** directory, and run server by the command `python3 manage.py runserver`.
+The backend of this project uses Django. Read the [backend guide](./Backend.md) to run the backend server.
