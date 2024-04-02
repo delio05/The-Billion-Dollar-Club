@@ -54,6 +54,22 @@ body {
   border: 2px solid #2980b9; 
 }
 
+.styled-translate {
+  display: inline-block;
+  padding: 2px 5px;
+  background-color: #d9534f;
+  color: white;
+  border: #d9534f;
+  border-radius: 5px;
+}
+
+/* Hover effect */
+.styled-translate:hover {
+  background-color: #2980b9;
+  color: #ffffff; 
+  border: 2px solid #2980b9; 
+}
+
 .instruction-box {
     border: 1px solid #ccc;
     padding: 10px;
@@ -96,6 +112,16 @@ body {
     background-color: #f9f9f9;
     position: relative;
   }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 999; /* Ensure the overlay is above other content */
+  }
   
   .instruction-box {
     width: 300px;
@@ -106,7 +132,7 @@ body {
     top: 50%; /* Position vertically at 50% */
     left: 50%; /* Position horizontally at 50% */
     transform: translate(-50%, -50%); /* Center the box */
-    transition: all 0.3s ease;
+    transition: all 0.3s ease;    
   }
   
   .instruction-box.minimized {
