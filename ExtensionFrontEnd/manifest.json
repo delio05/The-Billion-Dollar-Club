@@ -7,7 +7,8 @@
     "<all_urls>"
   ],
   "permissions": [
-    "storage"
+    "storage",
+    "sidePanel"
   ],
   "content_scripts": [
     {

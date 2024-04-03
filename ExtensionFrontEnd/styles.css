@@ -105,6 +105,12 @@ body {
     left: 10px;
   }
 
+  #extractButton:hover {
+    background-color: #2980b9;
+    color: #ffffff; 
+    border: 2px solid #2980b9; 
+  }
+
   #chatGPTResponse {
     border: 1px solid #ccc;
     padding: 10px;
@@ -153,6 +159,12 @@ body {
     position: absolute;
     bottom: 10px;
     right: 10px;
+  }
+
+  #reopenButton:hover {
+    background-color: #2980b9;
+    color: #ffffff; 
+    border: 2px solid #2980b9; 
   }
 
 
