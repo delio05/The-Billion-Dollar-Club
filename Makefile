@@ -1,6 +1,10 @@
 include .env
 export
 
-.PHONY: runserver
+.PHONY: runserver setup
+
+setup: requirements.txt
+	$(PYTHON_CMD) -m pip install -r requirements.txt
+
 runserver: MyChartExtension/manage.py
-	$(PYTHON_CMD) MyChartExtension/manage.py runserver
+	$(PYTHON_CMD) MyChartExtension/manage.py runserver > backend.log
