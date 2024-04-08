@@ -1,0 +1,7 @@
+syntax="proto3";
+
+message interpretation{
+    string status = 1;
+    string language = 2;
+    string content = 3;
+}
