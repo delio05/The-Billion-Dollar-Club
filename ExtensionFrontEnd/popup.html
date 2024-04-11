@@ -1,3 +1,4 @@
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
 <!DOCTYPE html>
 <html>
 
@@ -30,19 +31,20 @@
 
   <!-- Backend displays text here -->
   <div id="chatGPTResponse"></div>
-    <button id="extractButton" class="pdfButton">Extract to PDF</button>
-    <button id="reopenButton" class="reopenButton">Help</button>
-  </body>
+  <button id="extractButton" class="pdfButton">Extract to PDF</button>
+  <button id="reopenButton" class="reopenButton">Help</button>
+</body>
 
-  <div id="instructionBox" class="instruction-box">
-    <p><b><i> &#128075 Hi, welcome!</i></b></p>
-    <p><b>To use this extension:</b></p>
-    <p>1. Highlight whatever medical text you would like to simplify.
-      (You can choose to click the black highlight icon to see what you've highlighted, but this is optional!)
-    </p>
-    <p>2. Click on this extension to see the original text</p>
-    <p>3. Click on the 'Summarize' button to see your simplification below!</p>
-    <p>It's as easy as that &#128513</p>
-    <button id="closeButton">Close</button>
-  </div>
+<div id="instructionBox" class="instruction-box">
+  <p><b><i> &#128075 Hi, welcome!</i></b></p>
+  <p><b>To use this extension:</b></p>
+  <p>1. Highlight whatever medical text you would like to simplify.
+    (You can choose to click the black highlight icon to see what you've highlighted, but this is optional!)
+  </p>
+  <p>2. Click on this extension to see the original text</p>
+  <p>3. Click on the 'Summarize' button to see your simplification below!</p>
+  <p>It's as easy as that &#128513</p>
+  <button id="closeButton">Close</button>
+</div>
+
 </html>
