@@ -30,3 +30,4 @@ Since we only had the scope of one semester to work on this, here are some featu
 2. Extend Chatbox Functionality:
 3. Privacy Settings:
 4. Publish to Chrome Store: 
+5. Organize extracted PDF:
