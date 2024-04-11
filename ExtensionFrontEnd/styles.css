@@ -6,6 +6,7 @@ body {
   padding: 20px;
   overflow: auto;
   /* so we can scroll once there's more content */
+  font-family: 'Helvetica', sans-serif;
 }
 
 #loader-container {
