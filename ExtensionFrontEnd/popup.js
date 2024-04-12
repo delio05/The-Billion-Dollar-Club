@@ -1,3 +1,4 @@
+const { jsPDF } = window.jspdf;
 document.addEventListener("DOMContentLoaded", function () {
 
   //this is what gets the selected highlighted text and displays it on the extension
@@ -16,6 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
   button.addEventListener('click', function () {
     sendTextToBackend();
   });
+  var button1 = document.getElementById('extractButton');
+  button1.addEventListener('click', function () {
+    sendTextToBackend();
+  });
 });
 
 function sendTextToBackend() {
@@ -32,19 +37,21 @@ function sendTextToBackend() {
 }
 
 // Listener for Extracting buttom
-document.getElementById('extractButton').addEventListener('click', function () {
-
-  var textToExtract = document.getElementById('highlightedText').innerText;
-
-  var blob = new Blob([textToExtract], { type: 'text/plain' });
-  console.log(blob);
-  var url = URL.createObjectURL(blob);
-  console.log(blob);
-  var link = document.createElement('a');
-  link.href = url;
-  link.download = 'extracted_text.pdf'; // Set the download attribute
-  link.click(); // Simulate a click on the link
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//   document.getElementById('extractButton').addEventListener('click', function () {
+//     console.log(jsPDF);
+//     var doc = new jsPDF();
+//     var text = document.getElementById('highlightedText').value;  // Use value for textarea
+//     doc.text(text, 10, 10);
+//     doc.save('output.pdf');
+//   });
+// });
+function sendTextToBackend() {
+  var doc = new jsPDF();
+  var text = document.getElementById('chatGPTResponse').textContent;  // Use value for textarea
+  doc.text(text, 10, 10);
+  doc.save('output.pdf');
+}
 
 //Listener for Helper text box (minimize and maximize)
 document.addEventListener('DOMContentLoaded', function () {
