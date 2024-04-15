@@ -14,7 +14,7 @@
 
   <img src="myChartIcon.png" alt="myChartIcon" id="icon" />
 
-  <textarea id="highlightedText" style="width: 300px; max-width: 300px; min-width: 300px;" type="text">
+  <textarea id="highlightedText" style="width: 600px; max-width: 600px; min-width: 600px; height: 100px;" placeholder="Highlighted text is pasted here automatically..." type="text">
       </textarea>
 
   <div style="display: flex; align-items: center; gap: 10px;">
@@ -38,12 +38,27 @@
 
       <!-- add more languages as needed -->
     </select>
-  </div>
 
+      <button id="extractButton" class="pdfButton">Extract to PDF</button>
+      <button id="feedbackButton" class="feedbackButton">Feedback</button>
+      <button id="reopenButton" class="reopenButton">Help</button>
+
+  </div>
   <!-- Backend displays text here -->
   <div id="chatGPTResponse"></div>
-  <button id="extractButton" class="pdfButton">Extract to PDF</button>
-  <button id="reopenButton" class="reopenButton">Help</button>
+
+  <!-- Feedback Modal -->
+  <div id="feedbackModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Feedback</h2>
+      <textarea id="feedbackText" style="width: 300px; max-width: 300px; min-width: 300px; height: 100px;" placeholder="Type your feedback here..."></textarea>
+      <div>
+        <button id="thumbsUpButton" class="thumbs-up">&#128077;</button>
+        <button id="thumbsDownButton" class="thumbs-down">&#128078;</button>
+      </div>
+    </div>
+  </div>
 </body>
 
 <div id="instructionBox" class="instruction-box">

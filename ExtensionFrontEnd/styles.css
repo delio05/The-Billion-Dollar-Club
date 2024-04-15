@@ -1,5 +1,5 @@
 body {
-  width: 700px;
+  width: 600px;
   /* width of popup extension */
   height: 800px;
   /* height of popup extension */
@@ -57,11 +57,12 @@ body {
 
 .styled-translate {
   display: inline-block;
-  padding: 2px 5px;
+  padding: 5px 10px;
   background-color: #d9534f;
   color: white;
   border: #d9534f;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 /* Hover effect */
@@ -95,18 +96,31 @@ body {
 
   #extractButton {
     display: inline-block;
-    padding: 5px 10px;
+    padding: 6px 10px;
     background-color: #d9534f;
     color: white;
     border: #d9534f;
     border-radius: 5px;
     cursor: pointer;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
   }
 
   #extractButton:hover {
+    background-color: #2980b9;
+    color: #ffffff; 
+    border: 2px solid #2980b9; 
+  }
+
+  #feedbackButton {
+    display: inline-block;
+    padding: 6px 10px;
+    background-color: #d9534f;
+    color: white;
+    border: #d9534f;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #feedbackButton:hover {
     background-color: #2980b9;
     color: #ffffff; 
     border: 2px solid #2980b9; 
@@ -151,15 +165,12 @@ body {
 
   #reopenButton {
     display: inline-block;
-    padding: 5px 10px;
+    padding: 6px 10px;
     background-color: #d9534f;
     color: white;
     border: #d9534f;
     border-radius: 5px;
     cursor: pointer;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
   }
 
   #reopenButton:hover {
@@ -167,6 +178,42 @@ body {
     color: #ffffff; 
     border: 2px solid #2980b9; 
   }
+
+  /* Style for the modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4); /* Black background with transparency */
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* Close button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 
 
