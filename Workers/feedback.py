@@ -1,5 +1,6 @@
 import os
 import sys
+import csv
 from dotenv import load_dotenv
 from kafka import KafkaConsumer, TopicPartition
 from grpc.feedback_pb2 import feedback
@@ -25,11 +26,19 @@ def main():
                 feedback_msg = feedback()
                 feedback_msg.ParseFromString(message.value)
                 attitude = feedback_msg.attitude
+                userFeedback = feedback_msg.userFeedback
+                fields = [attitude, userFeedback]
+
+                with open("data/feedback.csv", "a") as f:
+                    writer = csv.writer(f)
+                    writer.writerow(fields)
+
+                
                 totalFeedback += 1
                 if attitude == 'positive':
                     positiveFeedback += 1
                 if debug: 
-                    print("Current totalFeedback: " + totalFeedback + " with positive feedback rate: " + 100*(positiveFeedback/totalFeedback))
+                    print("Current total feedback: " + totalFeedback + " with positive feedback rate: " + 100*(positiveFeedback/totalFeedback))
     
 
 if __name__ == '__main__':

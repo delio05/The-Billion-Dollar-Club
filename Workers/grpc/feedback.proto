@@ -2,4 +2,5 @@ syntax = "proto3";
 
 message feedback{
     string attitude = 1;
+    string userFeedback = 2;
 }
