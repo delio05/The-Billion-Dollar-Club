@@ -21,13 +21,14 @@ To use, users can highlight whatever they'd like simplified, and then go to thr 
 
 ## What Works & What Doesn't
 
-<!-- TO DO -->
+Currently every feature that we've implemented has full functionality as expected. This includes the summarization of complicated text, language translation, extract to PDF, and provide feedback (which is currently data being collected on our backend). That being said, there is still room for improvement in all these features. For example, what doesn't work yet from what had initially planned is that the extension doesn't persist data. So, if a user wants to see their old simplified text, it will not show up and they will have to re-highlight the text they want.
+As an alternative to that, we made the Extract to PDF option, which a user can use to save their old information. However, the features we did add have full functionality. 
 
 ## Future Steps
 
 Since we only had the scope of one semester to work on this, here are some features and next steps we would implement with more time:
-1. Improve UI: 
-2. Extend Chatbox Functionality:
-3. Privacy Settings:
-4. Publish to Chrome Store: 
-5. Organize extracted PDF:
+1. <b>Improve UI</b>: We currently have a straightforward and simple to use UI which aligned with our target audience for this extension. However, we would still like to find creative ways to improve the current design and make it more visually pleasing.
+2. <b>Extend Chatbox Functionality</b>: There is currently no way for the user to communicate back and forth with the AI (in other words, we don't have a chatbox functionality). This is something we wanted to do but did not have enough time during the semester to add and can be a future step to extend the functionality of this extension.
+3. <b>Privacy Settings</b>: Because the original purpose of this extension was to implemented with MyChart through Epic Systems, it would be important if this were ever being actively used to have some sort of privacy settings enabled.
+4. <b>Publish to Chrome Store</b>: The next step after fleshing out all these features would be to publish our extension to the Chrome Store so it can easily be accessed by anyone who'd like!
+5. <b>Organize extracted PDF</b>: 
