@@ -1,8 +1,11 @@
 import os
 import sys
 import csv
+import time
 from dotenv import load_dotenv
-from kafka import KafkaConsumer, TopicPartition
+from kafka import KafkaConsumer, TopicPartition, KafkaAdminClient
+from kafka.admin import NewTopic
+from kafka.errors import UnknownTopicOrPartitionError
 from grpc.feedback_pb2 import feedback
 
 load_dotenv()
@@ -13,6 +16,22 @@ positiveFeedback = 0
 
 FDBK_RECV_BROKER = 'localhost:9094'
 FDBK_RECV_TOPIC = 'Feedback'
+
+def init():
+    admin_client = KafkaAdminClient(bootstrap_server = [FDBK_RECV_BROKER])
+    try:
+        admin_client.delete_topics([FDBK_RECV_TOPIC])
+        if debug:
+            print("Topic deleted successfully")
+    except UnknownTopicOrPartitionError:
+        if debug:
+            print("cannot delete topic/s")
+    time.sleep(3)
+    admin_client.create_topics([NewTopic(
+        name = FDBK_RECV_TOPIC,
+        num_partitions = 1,
+        replication_factor = 1
+    )])
 
 def main():
     p_num = [int(arg) for arg in sys.argv[1:]]
@@ -42,4 +61,5 @@ def main():
     
 
 if __name__ == '__main__':
+    init()
     main()

@@ -5,7 +5,7 @@ import openai
 from openai import OpenAI
 from dotenv import load_dotenv
 from kafka import KafkaConsumer, KafkaProducer, TopicPartition
-from grpc.interpretation_pb2 import interpretation
+# from grpc.interpretation_pb2 import interpretation
 
 load_dotenv()
 debug = bool(os.environ.get("debug"))

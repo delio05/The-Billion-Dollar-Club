@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
     modal.style.display = "none"; // Close modal
 
     //TODO: Implement with Backend functionality
-    alert(feedbackComment);
+    // alert(feedbackComment);
+    sendFeedbackToBackend(isPositive = true);
 
     // Clear feedbackText after submission
     feedbackTextarea.value = "";
@@ -39,7 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
     modal.style.display = "none"; // Close modal
     
     //TODO: Replace with Backend functionality
-    alert(feedbackComment);
+    // alert(feedbackComment);
+    sendFeedbackToBackend(isPositive = false);
     
     // Clear feedbackText after submission
     feedbackTextarea.value = "";
@@ -71,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   var button1 = document.getElementById('extractButton');
   button1.addEventListener('click', function () {
-    sendTextToBackend();
+    sendPDFToBackend();
   });
 });
 
@@ -88,6 +90,32 @@ function sendTextToBackend() {
     .catch(error => console.error('Error sending text to backend:', error));
 }
 
+function sendFeedbackToBackend(isPosotive){
+  let text = document.getElementById("highlightedText").textContent;
+  let language = document.getElementById("languageChooser").value;
+  let attitude = null;
+  if(isPositive == true){
+    attitude = "positive";
+  }
+  else{
+    attitude = "negative";
+  }
+  let feedback = document.getElementById("feedbackText").value;
+  let previous = document.getElementById("chatGPTResponse").textContent;
+  const url = `http://localhost:8000/handleImages/feedback/?content=${encodeURIComponent(text)}&language=${encodeURIComponent(language)}&attitude=${encodeURIComponent(attitude)}&feedback=${encodeURIComponent(feedback)}&previous=${encodeURIComponent(previous)}`;
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      // Assuming 'data.content' contains the ChatGPT response
+      if(isPositive == false)
+      {
+        document.getElementById("chatGPTResponse").textContent = data.content;
+      }
+      console.log(data.content);
+    })
+    .catch(error => console.error('Error sending text to backend:', error));
+}
+
 // Listener for Extracting buttom
 // document.addEventListener('DOMContentLoaded', function () {
 //   document.getElementById('extractButton').addEventListener('click', function () {
@@ -98,7 +126,7 @@ function sendTextToBackend() {
 //     doc.save('output.pdf');
 //   });
 // });
-function sendTextToBackend() {
+function sendPDFToBackend() {
   var doc = new jsPDF();
   var text = document.getElementById('chatGPTResponse').textContent;  // Use value for textarea
   doc.text(text, 10, 10);

@@ -2,41 +2,37 @@ import os
 import sys
 import json
 
+import csv
+
 import openai
 from openai import OpenAI
 from dotenv import load_dotenv
-
-from kafka import KafkaProducer
 
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from django.contrib import messages
 
-sys.path.append(~'/The-Billion-Dollar-Club/Workers/grpc')
-
-from grpc.feedback_pb2 import feedback # type: ignore
-
 
 load_dotenv()
 debug = bool(os.environ.get("debug"))
 
-def index(request):
-    return HttpResponse("Hello, World! You are about to pass an image.")
-
-FDBK_RESP_BROKER = 'localhost:9094'
-FDBK_RESP_TOPIC = 'Feedback'
-
-
-producer = KafkaProducer(
-    bootstrap_servers = [FDBK_RESP_BROKER],
-    acks = "all",
-    retries = 10
+client = OpenAI(
+    api_key = os.environ.get("OPENAI_API_KEY"),
 )
 
+
+DATA_DIR = "/Users/halin/University of Wisconsin-Madison/2023-2024/Spring/Comp Sci 639 Capstone/The-Billion-Dollar-Club/data/feedback-{}.csv"
+
+BACKRGOUND_PROMPT = "You are a docter, skilled in explaining complex medical terms to patients whom with no professional backgroud. You will directly give your explanation with middle school level semantics in {}."
+REVIEWING_PROMPT = "You are a doctor. Your coworker just gave a summarization to a piece of text given by a user. Please check if they miss any important information. Your coworker's summarization is '{}'. Here is user's feedback: {}. You will directly give your short explanation to the patient with necessary changes in middle school level semantics in {}."
+
 def collect_feedback(attitude, userFeedback):
-    proto_feedback = feedback(attitude = attitude, userFeedback = userFeedback)
-    proto_value = proto_feedback.SerializeToString()
-    producer.send(FDBK_RESP_TOPIC, value = proto_value)
+    pid = os.getpid()
+    FILE_DIR = DATA_DIR.format(pid)
+    fields = [attitude, userFeedback]
+    with open(FILE_DIR, "a") as f:
+        writer = csv.writer(f)
+        writer.writerow(fields)
 
 
 def get_feedback(request):
@@ -45,7 +41,7 @@ def get_feedback(request):
     previousResponse = request.GET.get('previous')
     attitude = request.GET.get('attitude')
     userFeedback = request.GET.get('feedback')
-    collect_feedback(attitude, feedback)
+    collect_feedback(attitude, userFeedback)
     if attitude == 'negative':
         try:
             if debug: print("start to acquire response...")
@@ -77,14 +73,14 @@ def get_feedback(request):
             messages.warning(request, f"Exceed current quota...")
         except Exception as e:
             messages.warning(e.__context__)
-    
+    else:
+        returnData = {
+            'result' : "Successful",
+            'language': language,
+            'content': "Feedback collected",
+        }
+        return JsonResponse(returnData)
 
-BACKRGOUND_PROMPT = "You are a docter, skilled in explaining complex medical terms to patients whom with no professional backgroud. You will directly give your explanation with middle school level semantics in {}."
-REVIEWING_PROMPT = "You are a doctor. Your coworker just gave a summarization to a piece of text given by a user. Please check if they miss any important information. Your coworker's summarization is '{}'. Here is user's feedback: {}. You will directly give your short explanation to the patient with necessary changes in middle school level semantics in {}."
-
-client = OpenAI(
-    api_key = os.environ.get("OPENAI_API_KEY"),
-)
 
 def get_sentence(request):
     userInput = request.GET.get('content')
@@ -123,3 +119,6 @@ def get_sentence(request):
         messages.warning(request, f"Exceed current quota...")
     except Exception as e:
         messages.warning(e.__context__)
+
+def index(request):
+    return HttpResponse("Hello, World! You are about to pass an image.")

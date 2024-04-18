@@ -2,3 +2,6 @@
 .env
 *.pyc
 .vscode
+
+Workers/*
+*.csv
