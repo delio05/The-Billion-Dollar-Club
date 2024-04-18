@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // MODAL for Feedback Functionality
-document.addEventListener('DOMContentLoaded', function() {
-  
+document.addEventListener('DOMContentLoaded', function () {
+
   var modal = document.getElementById("feedbackModal");
   var feedbackButton = document.getElementById("feedbackButton");
   var closeBtn = document.getElementsByClassName("close")[0];
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var feedbackTextarea = document.getElementById("feedbackText");
 
   //When the user clicks the THUMBS UP button
-  thumbsUpButton.onclick = function() {
+  thumbsUpButton.onclick = function () {
     var feedbackComment = feedbackTextarea.value;
     modal.style.display = "none"; // Close modal
 
@@ -34,29 +34,29 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   //When the user clicks the THUMBS DOWN button
-  thumbsDownButton.onclick = function() {
+  thumbsDownButton.onclick = function () {
     var feedbackComment = feedbackTextarea.value;
     modal.style.display = "none"; // Close modal
-    
+
     //TODO: Replace with Backend functionality
     alert(feedbackComment);
-    
+
     // Clear feedbackText after submission
     feedbackTextarea.value = "";
   }
 
   // When the user clicks the button, open the modal 
-  feedbackButton.onclick = function() {
+  feedbackButton.onclick = function () {
     modal.style.display = "block";
   }
 
   // When the user clicks on <span> (x), close the modal
-  closeBtn.onclick = function() {
+  closeBtn.onclick = function () {
     modal.style.display = "none";
   }
 
   // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
+  window.onclick = function (event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   var button1 = document.getElementById('extractButton');
   button1.addEventListener('click', function () {
-    sendTextToBackend();
+    extractFromToBackend();
   });
 });
 
@@ -98,7 +98,7 @@ function sendTextToBackend() {
 //     doc.save('output.pdf');
 //   });
 // });
-function sendTextToBackend() {
+function extractFromToBackend() {
   var doc = new jsPDF();
   var text = document.getElementById('chatGPTResponse').textContent;  // Use value for textarea
   doc.text(text, 10, 10);
