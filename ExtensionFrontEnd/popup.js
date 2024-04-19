@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //TODO: Replace with Backend functionality
     // alert(feedbackComment);
     sendFeedbackToBackend(isPositive = false);
-    
+
     // Clear feedbackText after submission
     feedbackTextarea.value = "";
   }
@@ -71,12 +71,14 @@ document.addEventListener('DOMContentLoaded', function () {
   button.addEventListener('click', function () {
     sendTextToBackend();
   });
+});
+// Listener for extract Button
+document.addEventListener('DOMContentLoaded', function () {
   var button1 = document.getElementById('extractButton');
   button1.addEventListener('click', function () {
     extractFromToBackend();
   });
 });
-
 function sendTextToBackend() {
   let text = document.getElementById("highlightedText").textContent;
   let language = document.getElementById("languageChooser").value;
@@ -90,14 +92,14 @@ function sendTextToBackend() {
     .catch(error => console.error('Error sending text to backend:', error));
 }
 
-function sendFeedbackToBackend(isPosotive){
+function sendFeedbackToBackend(isPosotive) {
   let text = document.getElementById("highlightedText").textContent;
   let language = document.getElementById("languageChooser").value;
   let attitude = null;
-  if(isPositive == true){
+  if (isPositive == true) {
     attitude = "positive";
   }
-  else{
+  else {
     attitude = "negative";
   }
   let feedback = document.getElementById("feedbackText").value;
@@ -107,8 +109,7 @@ function sendFeedbackToBackend(isPosotive){
     .then(response => response.json())
     .then(data => {
       // Assuming 'data.content' contains the ChatGPT response
-      if(isPositive == false)
-      {
+      if (isPositive == false) {
         document.getElementById("chatGPTResponse").textContent = data.content;
       }
       console.log(data.content);
