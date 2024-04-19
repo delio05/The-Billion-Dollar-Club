@@ -1,4 +1,4 @@
-//const { jsPDF } = window.jspdf;
+const { jsPDF } = window.jspdf;
 document.addEventListener("DOMContentLoaded", function () {
 
   //this is what gets the selected highlighted text and displays it on the extension
