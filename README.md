@@ -31,4 +31,3 @@ Since we only had the scope of one semester to work on this, here are some featu
 2. <b>Extend Chatbox Functionality</b>: There is currently no way for the user to communicate back and forth with the AI (in other words, we don't have a chatbox functionality). This is something we wanted to do but did not have enough time during the semester to add and can be a future step to extend the functionality of this extension.
 3. <b>Privacy Settings</b>: Because the original purpose of this extension was to implemented with MyChart through Epic Systems, it would be important if this were ever being actively used to have some sort of privacy settings enabled.
 4. <b>Publish to Chrome Store</b>: The next step after fleshing out all these features would be to publish our extension to the Chrome Store so it can easily be accessed by anyone who'd like!
-5. <b>Organize extracted PDF</b>: 

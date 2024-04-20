@@ -1,4 +1,4 @@
-const { jsPDF } = window.jspdf;
+//const { jsPDF } = window.jspdf;
 document.addEventListener("DOMContentLoaded", function () {
 
   //this is what gets the selected highlighted text and displays it on the extension
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Clear feedbackText after submission
     feedbackTextarea.value = "";
+    alert("We appreciate your feedback!");
   }
 
   //When the user clicks the THUMBS DOWN button
@@ -45,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Clear feedbackText after submission
     feedbackTextarea.value = "";
+    alert("We're sorry to hear about your negative experience! Please give us a moment to adjust our response.");
   }
 
   // When the user clicks the button, open the modal 
