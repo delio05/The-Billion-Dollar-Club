@@ -1,9 +1,11 @@
 # web application framework
 Django==5.0.1
 
+# Load enviroment variable
+python-dotenv==1.0.1
+
 # OPENAI-related
 openai==1.14.0
-python-dotenv==1.0.1
 
 # Gemini-related
 google-generativeai==0.5.2

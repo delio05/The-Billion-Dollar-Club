@@ -26,18 +26,15 @@ genai.configure(
 )
 GOOGLE_client = genai.GenerativeModel('gemini-pro')
 
-
-DATA_DIR = "/Users/halin/University of Wisconsin-Madison/2023-2024/Spring/Comp Sci 639 Capstone/The-Billion-Dollar-Club/data/feedback-{}.csv"
-
 BACKRGOUND_PROMPT = "You are a docter, skilled in explaining complex medical terms to patients whom with no professional backgroud. You will directly give your explanation with middle school level semantics in {}. Remember, you need to make this short."
 REVIEW_PROMPT = "You are a doctor. Your coworker just gave a summarization to a piece of text given by a user. Please check if they miss any important information. The original text is '{}', and your coworker's summarization is '{}'. Revise it if necessary. You will directly give your summarization in {}. Remember, you need to make this short. "
 FEEDBACK_PROMPT = "You are a doctor. Your coworker just gave a summarization to a piece of text given by a user. Please check if they miss any important information. Your coworker's summarization is '{}'. Here is user's feedback: {}. You will directly give your short explanation to the patient with necessary changes in middle school level semantics in {}. Remeber, you need to make this short unless user specified other requirements."
 
+FEEDBACK_FILE_DIR = os.environ.get("FEEDBACK_FILE_DIR")
+
 def collect_feedback(attitude, userFeedback):
-    pid = os.getpid()
-    FILE_DIR = DATA_DIR.format(pid)
     fields = [attitude, userFeedback]
-    with open(FILE_DIR, "a") as f:
+    with open(FEEDBACK_FILE_DIR, "a") as f:
         writer = csv.writer(f)
         writer.writerow(fields)
 
