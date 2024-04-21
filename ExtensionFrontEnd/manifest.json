@@ -26,6 +26,9 @@
     "default_popup": "popup.html",
     "default_icon": "myChartIcon.png"
   },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
   "web_accessible_resources": [
     {
       "resources": [
