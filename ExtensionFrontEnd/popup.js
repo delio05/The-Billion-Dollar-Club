@@ -132,9 +132,7 @@ function sendFeedbackToBackend(isPosotive) {
 function extractFromToBackend() {
   var doc = new jsPDF();
   var text = document.getElementById('chatGPTResponse').textContent;  // Use value for textarea
-  // doc.text(text, 10, 10);
-  // doc.text(text, 15, 15, { maxWidth: 180 });
-  // doc.save('output.pdf');
+  var pageHeight = doc.internal.pageSize.getHeight();
 
   var imgData = 'myChartIcon.png'; var pageWidth = doc.internal.pageSize.getWidth();
   var imgWidth = 50;
@@ -156,12 +154,16 @@ function extractFromToBackend() {
     currentY += 7;
   });
   doc.setTextColor(255, 0, 0);
-  doc.text("Original Text:", 10, currentY);
-  currentY += 10
+  doc.text("Highlighted Text:", 10, currentY);
+  currentY += 25
   doc.setTextColor(0, 0, 0);
   var text = document.getElementById('highlightedText').textContent;
   var wrappedText = doc.splitTextToSize(text, maxWidth);
   wrappedText.forEach(line => {
+    if (currentY > pageHeight - 10) { // 10 is bottom margin
+      doc.addPage();
+      currentY = 10; // Reset Y on new page
+    }
     doc.text(line, 10, currentY);
     currentY += 7;
   });
