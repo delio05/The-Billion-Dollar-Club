@@ -6,6 +6,7 @@ import csv
 
 import openai
 from openai import OpenAI
+import google.generativeai as genai
 from dotenv import load_dotenv
 
 from django.shortcuts import render
@@ -16,15 +17,21 @@ from django.contrib import messages
 load_dotenv()
 debug = bool(os.environ.get("debug"))
 
-client = OpenAI(
+OPENAI_client = OpenAI(
     api_key = os.environ.get("OPENAI_API_KEY"),
 )
+
+genai.configure(
+    api_key = os.environ.get("GOOGLE_API_KEY"),
+)
+GOOGLE_client = genai.GenerativeModel('gemini-pro')
 
 
 DATA_DIR = "/Users/halin/University of Wisconsin-Madison/2023-2024/Spring/Comp Sci 639 Capstone/The-Billion-Dollar-Club/data/feedback-{}.csv"
 
-BACKRGOUND_PROMPT = "You are a docter, skilled in explaining complex medical terms to patients whom with no professional backgroud. You will directly give your explanation with middle school level semantics in {}."
-REVIEWING_PROMPT = "You are a doctor. Your coworker just gave a summarization to a piece of text given by a user. Please check if they miss any important information. Your coworker's summarization is '{}'. Here is user's feedback: {}. You will directly give your short explanation to the patient with necessary changes in middle school level semantics in {}."
+BACKRGOUND_PROMPT = "You are a docter, skilled in explaining complex medical terms to patients whom with no professional backgroud. You will directly give your explanation with middle school level semantics in {}. Remember, you need to make this short."
+REVIEW_PROMPT = "You are a doctor. Your coworker just gave a summarization to a piece of text given by a user. Please check if they miss any important information. The original text is '{}', and your coworker's summarization is '{}'. Revise it if necessary. You will directly give your summarization in {}. Remember, you need to make this short. "
+FEEDBACK_PROMPT = "You are a doctor. Your coworker just gave a summarization to a piece of text given by a user. Please check if they miss any important information. Your coworker's summarization is '{}'. Here is user's feedback: {}. You will directly give your short explanation to the patient with necessary changes in middle school level semantics in {}. Remeber, you need to make this short unless user specified other requirements."
 
 def collect_feedback(attitude, userFeedback):
     pid = os.getpid()
@@ -44,13 +51,15 @@ def get_feedback(request):
     collect_feedback(attitude, userFeedback)
     if attitude == 'negative':
         try:
+            if debug:
+                print("loading...")
             if debug: print("start to acquire response...")
-            _response = client.chat.completions.create(
+            _response = OPENAI_client.chat.completions.create(
                 model = "gpt-3.5-turbo-0125",
                 messages = [
                     {
                         "role":"system",
-                        "content": REVIEWING_PROMPT.format(previousResponse, userFeedback, language),
+                        "content": FEEDBACK_PROMPT.format(previousResponse, userFeedback, language),
                     },
                     {
                         "role":"user",
@@ -90,7 +99,7 @@ def get_sentence(request):
         print("userInput: ", userInput)
     try:
         if debug: print("start to acquire response...")
-        _response = client.chat.completions.create(
+        _response = OPENAI_client.chat.completions.create(
             model = "gpt-3.5-turbo-0125",
             messages = [
                 {
@@ -104,7 +113,7 @@ def get_sentence(request):
             ]
         )
         response = _response.choices[0].message.content
-
+        response = GOOGLE_client.generate_content(REVIEW_PROMPT.format(userInput, response, language)).text
         returnData = {
             'result': "Successful",
             'language': language,
