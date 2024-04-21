@@ -131,7 +131,7 @@ function sendFeedbackToBackend(isPosotive) {
 // });
 function extractFromToBackend() {
   var doc = new jsPDF();
-  var text = document.getElementById('highlightedText').textContent;  // Use value for textarea
+  var text = document.getElementById('chatGPTResponse').textContent;  // Use value for textarea
   // doc.text(text, 10, 10);
   // doc.text(text, 15, 15, { maxWidth: 180 });
   // doc.save('output.pdf');
@@ -147,6 +147,20 @@ function extractFromToBackend() {
 
   var wrappedText = doc.splitTextToSize(text, maxWidth);
   var currentY = 60;
+  doc.setTextColor(255, 0, 0);
+  doc.text("Summary:", 10, currentY);
+  doc.setTextColor(0, 0, 0);
+  var currentY = 70;
+  wrappedText.forEach(line => {
+    doc.text(line, 10, currentY);
+    currentY += 7;
+  });
+  doc.setTextColor(255, 0, 0);
+  doc.text("Original Text:", 10, currentY);
+  currentY += 10
+  doc.setTextColor(0, 0, 0);
+  var text = document.getElementById('highlightedText').textContent;
+  var wrappedText = doc.splitTextToSize(text, maxWidth);
   wrappedText.forEach(line => {
     doc.text(line, 10, currentY);
     currentY += 7;
@@ -154,7 +168,7 @@ function extractFromToBackend() {
   doc.setTextColor(255, 0, 0);
   doc.setFontSize(12);
   currentY += 20;
-  doc.text("If you feel unwell, please seek medical attention promptly.", 10, currentY);
+  doc.text("Disclaimer: This is a summary of your highlighted notes. Please contact your doctor for medical help.", 10, currentY);
 
   doc.save('output.pdf');
 }
