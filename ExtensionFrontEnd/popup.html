@@ -7,6 +7,19 @@
   <link rel="stylesheet" href="styles.css">
   <script src="jspdf.umd.min.js"></script>
   <script src="popup.js" defer></script>
+  <script>
+    function dynamicSize() {
+      var responseContainer = document.getElementById('chatGPTResponse');
+      var extensionBody = document.getElementById('extensionBody');
+      var responseHeight = responseContainer.clientHeight;
+      extensionBody.style.height = (responseHeight + 40) + 'px';
+      
+      //width adjustment (can keep or not)
+      //var responseWidth = responseContainer.clientWidth;
+      //extensionBody.style.width = (responseWidth + 40) + 'px';
+      window.onload = dynamicSize;
+    }
+  </script>
 </head>
 
 <body>
