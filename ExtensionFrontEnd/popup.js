@@ -131,8 +131,31 @@ function sendFeedbackToBackend(isPosotive) {
 // });
 function extractFromToBackend() {
   var doc = new jsPDF();
-  var text = document.getElementById('chatGPTResponse').textContent;  // Use value for textarea
-  doc.text(text, 10, 10);
+  var text = document.getElementById('highlightedText').textContent;  // Use value for textarea
+  // doc.text(text, 10, 10);
+  // doc.text(text, 15, 15, { maxWidth: 180 });
+  // doc.save('output.pdf');
+
+  var imgData = 'myChartIcon.png'; var pageWidth = doc.internal.pageSize.getWidth();
+  var imgWidth = 50;
+  var imgHeight = 50;
+  var xPosition = (pageWidth / 2) - (imgWidth / 2); // Centering the image
+
+  // Add the image at position x, y = 20mm from the top, width, height
+  doc.addImage(imgData, 'JPEG', xPosition, 5, imgWidth, imgHeight);
+  var maxWidth = 180;
+
+  var wrappedText = doc.splitTextToSize(text, maxWidth);
+  var currentY = 60;
+  wrappedText.forEach(line => {
+    doc.text(line, 10, currentY);
+    currentY += 7;
+  });
+  doc.setTextColor(255, 0, 0);
+  doc.setFontSize(12);
+  currentY += 20;
+  doc.text("If you feel unwell, please seek medical attention promptly.", 10, currentY);
+
   doc.save('output.pdf');
 }
 
