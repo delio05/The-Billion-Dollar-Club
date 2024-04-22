@@ -71,6 +71,10 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   var button = document.getElementById('sentenceSubmit');
   button.addEventListener('click', function () {
+    document.getElementById('loadingIcon').style.display = 'block';
+    document.getElementById('chatGPTResponse').textContent = "";
+    document.getElementById('disclaimer').style.display = 'none';
+    sendTextToBackend();
     sendTextToBackend();
   });
 });
@@ -90,6 +94,8 @@ function sendTextToBackend() {
     .then(data => {
       // Assuming 'data.content' contains the ChatGPT response
       document.getElementById("chatGPTResponse").textContent = data.content;
+      document.getElementById('loadingIcon').style.display = 'none';
+      document.getElementById('disclaimer').style.display = 'block';
     })
     .catch(error => console.error('Error sending text to backend:', error));
 }

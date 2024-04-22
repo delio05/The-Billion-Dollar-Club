@@ -35,34 +35,22 @@ body {
 /* Summarize Button */
 .styled-button {
   display: inline-block;
-  padding: 5px 10px;
-  font-size: 16px;
   font-weight: bold;
-  text-align: center;
-  text-decoration: none;
+  padding: 5px 10px;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
   background-color: #d9534f;
   color: #ffffff; 
-  border: 2px solid #d9534f;
+  border: #d9534f;
 }
+
+
 
 /* Hover effect */
 .styled-button:hover {
   background-color: #2980b9;
   color: #ffffff; 
   border: 2px solid #2980b9; 
-}
-
-.styled-translate {
-  display: inline-block;
-  padding: 5px 10px;
-  background-color: #d9534f;
-  color: white;
-  border: #d9534f;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 /* Hover effect */
@@ -113,6 +101,20 @@ body {
     border: 2px solid #2980b9; 
   }
 
+  .styled-translate {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #d9534f;
+    color: white;
+    border: #d9534f;
+    border-radius: 5px;
+    margin-left: 80px;
+    position: absolute;
+    top: 350;
+    right: 110px;
+    cursor: pointer;
+  }
+
   #feedbackButton {
     display: inline-block;
     padding: 6px 10px;
@@ -120,6 +122,9 @@ body {
     color: white;
     border: #d9534f;
     border-radius: 5px;
+    position: absolute;
+    top: 350;
+    right: 20px;
     cursor: pointer;
   }
 
