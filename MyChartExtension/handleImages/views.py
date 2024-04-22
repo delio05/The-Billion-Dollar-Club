@@ -26,9 +26,9 @@ genai.configure(
 )
 GOOGLE_client = genai.GenerativeModel('gemini-pro')
 
-BACKRGOUND_PROMPT = "You are a docter, skilled in explaining complex medical terms to patients whom with no professional backgroud. You will directly give your explanation to the patient about this doctor note with middle school level semantics in {}. Remember, you need to make this short."
-REVIEW_PROMPT = "You are a doctor. Your coworker just gave a summarization to a piece of text given by a user who is a patient acquiring about his/her doctor note. Please check if they miss any important information. The original text is '{}', and your coworker's summarization is '{}'. Revise it if necessary. You will directly give your summarization in {}. Remember, you need to make this short. "
-FEEDBACK_PROMPT = "You are a doctor. Your coworker just gave a summarization to a piece of text given by a user. Please check if they miss any important information. Your coworker's summarization is '{}'. Here is user's feedback: {}. You will directly give your short explanation to the patient with necessary changes in middle school level semantics in {}. Remeber, you need to make this short unless user specified other requirements."
+BACKRGOUND_PROMPT = "You are a docter, skilled in explaining complex medical terms to patients whom with no professional backgroud. You will directly give your explanation to the patient about this doctor note with middle school level semantics in {}. Remember, you need to reduce the original text's length when summarizing. "
+REVIEW_PROMPT = "You are a doctor. Your coworker just gave a summarization to a piece of text given by a user who is a patient acquiring about his/her doctor note. Please check if they miss any important information. The original text is '{}', and your coworker's summarization is '{}'. Revise it if necessary. You will directly give your summarization in {}. Remember, you need to reduce the original text's length when summarizing. "
+FEEDBACK_PROMPT = "You are a doctor. Your coworker just gave a summarization to a piece of text given by a user. Please check if they miss any important information. Your coworker's summarization is '{}'. Here is user's feedback: {}. You will directly give your short explanation to the patient with necessary changes in middle school level semantics in {}. Remember, you need to reduce the original text's length when summarizing unless user specified other requirements."
 
 FEEDBACK_FILE_DIR = os.environ.get("FEEDBACK_FILE_DIR")
 
