@@ -154,8 +154,9 @@ function extractFromToBackend() {
     currentY += 7;
   });
   doc.setTextColor(255, 0, 0);
-  doc.text("Highlighted Text:", 10, currentY);
   currentY += 25
+  doc.text("Highlighted Text:", 10, currentY);
+
   doc.setTextColor(0, 0, 0);
   var text = document.getElementById('highlightedText').textContent;
   var wrappedText = doc.splitTextToSize(text, maxWidth);
