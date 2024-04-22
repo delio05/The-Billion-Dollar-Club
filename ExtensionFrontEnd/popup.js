@@ -75,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('chatGPTResponse').textContent = "";
     document.getElementById('disclaimer').style.display = 'none';
     sendTextToBackend();
-    sendTextToBackend();
   });
 });
 // Listener for extract Button
