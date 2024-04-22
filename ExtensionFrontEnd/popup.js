@@ -89,38 +89,35 @@ function sendTextToBackend() {
   let text = document.getElementById("highlightedText").textContent;
   let language = document.getElementById("languageChooser").value;
   const url = `http://localhost:8000/handleImages/sentenceAnalyze/?content=${encodeURIComponent(text)}&language=${encodeURIComponent(language)}`;
+  document.getElementById('loadingIcon').style.display = 'flex'; // Show loading icon
   fetch(url)
     .then(response => response.json())
     .then(data => {
       // Assuming 'data.content' contains the ChatGPT response
       document.getElementById("chatGPTResponse").textContent = data.content;
-      document.getElementById('loadingIcon').style.display = 'none';
+      document.getElementById('loadingIcon').style.display = 'none'; // Hide loading icon
       document.getElementById('disclaimer').style.display = 'block';
     })
     .catch(error => console.error('Error sending text to backend:', error));
 }
 
-function sendFeedbackToBackend(isPosotive) {
+function sendFeedbackToBackend(isPositive) {
   let text = document.getElementById("highlightedText").textContent;
   let language = document.getElementById("languageChooser").value;
-  let attitude = null;
-  if (isPositive == true) {
-    attitude = "positive";
-  }
-  else {
-    attitude = "negative";
-  }
+  let attitude = isPositive ? "positive" : "negative";
   let feedback = document.getElementById("feedbackText").value;
   let previous = document.getElementById("chatGPTResponse").textContent;
   const url = `http://localhost:8000/handleImages/feedback/?content=${encodeURIComponent(text)}&language=${encodeURIComponent(language)}&attitude=${encodeURIComponent(attitude)}&feedback=${encodeURIComponent(feedback)}&previous=${encodeURIComponent(previous)}`;
+  document.getElementById('loadingIcon').style.display = 'flex'; // Show loading icon
   fetch(url)
     .then(response => response.json())
     .then(data => {
       // Assuming 'data.content' contains the ChatGPT response
-      if (isPositive == false) {
+      if (!isPositive) {
         document.getElementById("chatGPTResponse").textContent = data.content;
       }
       console.log(data.content);
+      document.getElementById('loadingIcon').style.display = 'none'; // Hide loading icon
     })
     .catch(error => console.error('Error sending text to backend:', error));
 }

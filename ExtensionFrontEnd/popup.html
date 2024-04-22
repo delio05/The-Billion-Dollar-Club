@@ -7,19 +7,6 @@
   <link rel="stylesheet" href="styles.css">
   <script src="jspdf.umd.min.js"></script>
   <script src="popup.js" defer></script>
-  <script>
-    function dynamicSize() {
-      var responseContainer = document.getElementById('chatGPTResponse');
-      var extensionBody = document.getElementById('extensionBody');
-      var responseHeight = responseContainer.clientHeight;
-      extensionBody.style.height = (responseHeight + 40) + 'px';
-      
-      //width adjustment (can keep or not)
-      //var responseWidth = responseContainer.clientWidth;
-      //extensionBody.style.width = (responseWidth + 40) + 'px';
-      window.onload = dynamicSize;
-    }
-  </script>
 </head>
 
 <body>
@@ -59,10 +46,12 @@
 
   </div>
   <!-- Backend displays text here -->
-  <div id="loadingIcon" style="display: none; justify-content: center; align-items: center;">
-    <img src="loading.gif" alt="Loading..." />
+  <div id = "responseContainer">
+    <div id="loadingIcon" style="display: none; justify-content: center; align-items: center;">
+      <img src="loading.gif" alt="Loading..." />
+    </div>
+    <div id="chatGPTResponse"></div>
   </div>
-  <div id="chatGPTResponse"></div>
   <div id="disclaimer" style="display: none;">
     <p><b>Disclaimer:</b> This is a summary of your highlighted notes. Please contact your doctor for medical help.</p>
   </div>
