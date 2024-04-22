@@ -158,7 +158,7 @@ function extractFromToBackend() {
   doc.setTextColor(255, 0, 0);
   currentY += 25
   doc.text("Highlighted Text:", 10, currentY);
-
+  currentY += 10
   doc.setTextColor(0, 0, 0);
   var text = document.getElementById('highlightedText').textContent;
   var wrappedText = doc.splitTextToSize(text, maxWidth);
