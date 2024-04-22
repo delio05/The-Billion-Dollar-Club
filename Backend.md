@@ -16,4 +16,4 @@
 
 ## How to Start Server
 
-Stay in the **THE-BILLION-DOLLAR-CLUB**. Run the command `make runserver`. Quit the server by `CONTROL-C`.
+Stay in the **THE-BILLION-DOLLAR-CLUB**. Run the command `make runserver`. Quit the server by `make clean`.
